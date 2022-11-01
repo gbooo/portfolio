@@ -9,6 +9,8 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
           hello test
+
+          <div className="bg-red-400 h-12 text-white">Welcome</div>
         </p>
         <a
           className="App-link"
