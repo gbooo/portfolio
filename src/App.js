@@ -1,25 +1,24 @@
 import './App.css';
+import Home from './components/Home';
+import Navbar from './components/Navbar';
 
 function App() {
+  const onButtonClick = (file) => {
+    fetch(file).then(response => {
+        response.blob().then(blob => {
+            const fileURL = window.URL.createObjectURL(blob);
+            let alink = document.createElement('a');
+            alink.href = fileURL;
+            alink.download = file;
+            alink.click();
+        })
+    })
+}
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-          hello test
-
-          <div className="bg-red-400 h-12 text-white">Welcome</div>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+      <Home onButtonClick={onButtonClick}/>
+      <div className="h-700 w-full"></div>
     </div>
   );
 }
